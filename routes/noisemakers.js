@@ -9,10 +9,7 @@ const {
 const validateObjectId = require("../middleware/validateObjectIdMiddleware");
 const protect = require("../middleware/authMiddleWare");
 const router = express.Router();
-router
-  .route("/")
-  .get(getNoiseMakers)
-  .post(protect, validateObjectId, createNoiseMaker);
+router.route("/").get(getNoiseMakers).post(protect, createNoiseMaker);
 router
   .route("/:id")
   .get(getNoiseMaker)
