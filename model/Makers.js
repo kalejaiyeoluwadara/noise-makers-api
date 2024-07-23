@@ -8,5 +8,9 @@ const MakersSchema = new mongoose.Schema({
     type: Number,
     default: 1,
   },
+  image: {
+    type: String,
+    required: true,
+  },
 });
 module.exports = mongoose.model("NoiseMakers", MakersSchema);

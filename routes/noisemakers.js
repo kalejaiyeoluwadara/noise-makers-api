@@ -8,8 +8,12 @@ const {
 } = require("../controller/noisemakers");
 const validateObjectId = require("../middleware/validateObjectIdMiddleware");
 const protect = require("../middleware/authMiddleWare");
+const upload = require("../config/multer");
 const router = express.Router();
-router.route("/").get(getNoiseMakers).post(protect, createNoiseMaker);
+router
+  .route("/")
+  .get(getNoiseMakers)
+  .post(protect, upload.single("image"), createNoiseMaker);
 router
   .route("/:id")
   .get(getNoiseMaker)

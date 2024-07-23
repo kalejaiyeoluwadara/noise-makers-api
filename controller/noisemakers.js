@@ -27,8 +27,10 @@ const getNoiseMaker = async (req, res) => {
 };
 // Create a new noise maker
 const createNoiseMaker = async (req, res) => {
+  const { name, times } = req.body;
+  const image = req.file.path;
   try {
-    const noiseMaker = await Makers.create(req.body);
+    const noiseMaker = await Makers.create({ name, times, image });
     res.status(201).json({ noiseMaker });
   } catch (error) {
     res.status(500).json({ message: error.message });
